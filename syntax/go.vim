@@ -220,7 +220,7 @@ syn match goOperator /\%(<<\|>>\|&^\)=\?/
 " match remaining two-char operators: := && || <- ++ --
 syn match goOperator /:=\|||\|<-\|++\|--/
 " match ...
- h def link     goPointerOperator   goOperator
+hi def link     goPointerOperator   goOperator
 hi def link     goVarArgs           goOperator
 hi def link     goOperator          Operator
 
@@ -231,13 +231,13 @@ syn match goReceiverVar       /\w\+\ze\s\+\%(\w\|\*\)/ nextgroup=goPointerOperat
 syn match goPointerOperator   /\*/ nextgroup=goReceiverType contained skipwhite skipnl
 syn match goFunction          /\w\+/ nextgroup=goSimpleParams contained skipwhite skipnl
 syn match goReceiverType      /\w\+\ze\s*)/ contained
-  syn match goSimpleParams      /(\%(\w\|\_s\|[*\.\[\],\{\}<>-]\)*)/ contained contains=goParamName,goType nextgroup=goFunctionReturn skipwhite skipnl
-  syn match goFunctionReturn   /(\%(\w\|\_s\|[*\.\[\],\{\}<>-]\)*)/ contained contains=goParamName,goType skipwhite skipnl
-  syn match goParamName        /\w\+\%(\s*,\s*\w\+\)*\ze\s\+\%(\w\|\.\|\*\|\[\)/ contained nextgroup=goParamType skipwhite skipnl
-  syn match goParamType        /\%([^,)]\|\_s\)\+,\?/ contained nextgroup=goParamName skipwhite skipnl
-                        \ contains=goVarArgs,goType,goSignedInts,goUnsignedInts,goFloats,goComplexes,goDeclType,goBlock
-  hi def link   goReceiverVar    goParamName
-  hi def link   goParamName      Identifier
+syn match goSimpleParams      /(\%(\w\|\_s\|[*\.\[\],\{\}<>-]\)*)/ contained contains=goParamName,goType nextgroup=goFunctionReturn skipwhite skipnl
+syn match goFunctionReturn   /(\%(\w\|\_s\|[*\.\[\],\{\}<>-]\)*)/ contained contains=goParamName,goType skipwhite skipnl
+syn match goParamName        /\w\+\%(\s*,\s*\w\+\)*\ze\s\+\%(\w\|\.\|\*\|\[\)/ contained nextgroup=goParamType skipwhite skipnl
+syn match goParamType        /\%([^,)]\|\_s\)\+,\?/ contained nextgroup=goParamName skipwhite skipnl
+                      \ contains=goVarArgs,goType,goSignedInts,goUnsignedInts,goFloats,goComplexes,goDeclType,goBlock
+hi def link   goReceiverVar    goParamName
+hi def link   goParamName      Identifier
 syn match goReceiver          /(\s*\%(\w\+\s\+\)\?\*\?\s*\w\+\s*)\ze\s*\w/ contained nextgroup=goFunction contains=goReceiverDecl skipwhite skipnl
 syn keyword goDeclaration func
 hi def link     goFunction          Function
